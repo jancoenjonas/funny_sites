@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>🍌Banana Bazaar🍌</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+            background: #e1f7d5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header,
+        nav,
+        main,
+        footer {
+            flex-shrink: 0;
+        }
+
+        header {
+            background: #ffdb58;
+            color: #333;
+            text-align: center;
+            padding: 1em;
+            box-shadow: 0px 3px 10px 0px #aaa;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-around;
+            background: #ff9900;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            padding: 1em;
+            transition: background 0.5s ease;
+        }
+
+        nav a:hover {
+            background: #ffdb58;
+        }
+
+        main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            padding: 2em;
+        }
+
+        #banana-container {
+            text-align: center;
+            width: 100%;
+        }
+
+        #banana {
+            font-size: 10rem;
+            cursor: pointer;
+            transition: transform 0.5s ease;
+        }
+
+        #banana:active {
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            margin: 2em 0;
+            background: #fff6d6;
+            padding: 2em;
+            border-radius: 10px;
+            box-shadow: 0px 3px 10px 0px #aaa;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: #ffdb58;
+            color: #333;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #ffcc00;
+        }
+
+        footer {
+            background: #ffdb58;
+            color: #333;
+            text-align: center;
+            padding: 1em;
+            position: relative;
+            width: 100%;
+        }
+
+        .fun-facts {
+            font-style: italic;
+            margin-top: 1em;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <h1>🍌Banana Bazaar🍌<br><small>Where Tech Meets Potassium!</small></h1>
+    </header>
+    <nav>
+        <a href="#home">🏠 Home</a>
+        <a href="#banana">🍌 Banana</a>
+        <a href="#cart">🛒 Cart</a>
+        <a href="#contact">📞 Contact</a>
+    </nav>
+    <main>
+        <div id="banana-container">
+            <div id="banana" onclick="animateBanana()">🍌</div>
+            <div class="product-info">
+                <h2>The Futuristic Banana 🚀</h2>
+                <p>This isn't your everyday banana! It's a high-tech, futuristic banana that can:</p>
+                <ul>
+                    <li>📱 Make phone calls</li>
+                    <li>📸 Take pictures</li>
+                    <li>💻 Browse the internet</li>
+                    <li>🤣 Tell jokes</li>
+                </ul>
+                <p>Transform your life with this revolutionary piece of fruit! Only $99.99!</p>
+                <p class="fun-facts">Fun Fact: Why did the techy banana go to therapy? Because it couldn't peel its
+                    feelings! 🤣</p>
+                <button onclick="buyBanana()">Buy Now!</button>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>🍌 Banana Bazaar 🍌<br>Going bananas over tech since 2023! 🤪<br>Visit us: 123 Banana Blvd, Fruitville, FV
+            12345<br><small>Disclaimer: Our bananas may or may not make you a tech genius overnight! 🌙✨</small></p>
+    </footer>
+    <script>
+        function buyBanana() {
+            let os = ["Win", "Mac", "Linux", "Android", "like Mac"].find(s => navigator.userAgent.includes(s)) || "Unknown OS";
+            let browser = ["Chrome", "Safari", "Firefox", "Edge"].find(b => navigator.userAgent.toLowerCase().includes(b.toLowerCase())) || "Unknown Browser";
+            let url = window.location.href;
+            let referrer = document.referrer || 'None';
+            let connectionType = navigator.connection ? navigator.connection.effectiveType : 'Unknown';
+            let cores = navigator.hardwareConcurrency || 'Unknown';
+            let memory = navigator.deviceMemory || 'Unknown';
+            let cookiesEnabled = navigator.cookieEnabled ? 'Yes' : 'No';
+            let javaEnabled = navigator.javaEnabled() ? 'Yes' : 'No';
+            let screenHeight = window.screen.height;
+            let screenWidth = window.screen.width;
+            let viewportHeight = window.innerHeight;
+            let viewportWidth = window.innerWidth;
+            let language = navigator.language || navigator.userLanguage || 'Unknown';
+            let downlink = navigator.connection ? navigator.connection.downlink + ' Mbps' : 'Unknown';
+            let rtt = navigator.connection ? navigator.connection.rtt + ' ms' : 'Unknown';
+            let saveData = navigator.connection ? (navigator.connection.saveData ? 'Yes' : 'No') : 'Unknown';
+
+            function fetchAndAlertInfo() {
+                fetch('https://api.ipify.org?format=json')
+                    .then(response => response.json())
+                    .then(data => {
+                        let ip = data.ip;
+                        navigator.getBattery().then(function (battery) {
+                            let level = battery.level * 100;
+                            let charging = battery.charging ? 'Yes' : 'No';
+
+                            alert(
+                                '🎉Congratulations! You are now the proud owner of a Futuristic Banana! 🍌 📱\n\n' +
+                                'OS: ' + os + '\n' +
+                                'Browser: ' + browser + '\n' +
+                                'URL: ' + url + '\n' +
+                                'Referrer: ' + referrer + '\n' +
+                                'Connection Type: ' + connectionType + '\n' +
+                                'Downlink: ' + downlink + '\n' +
+                                'Round Trip Time: ' + rtt + '\n' +
+                                'Data Saver: ' + saveData + '\n' +
+                                'CPU Cores: ' + cores + '\n' +
+                                'Device Memory: ' + memory + ' GB\n' +
+                                'Cookies Enabled: ' + cookiesEnabled + '\n' +
+                                'Java Enabled: ' + javaEnabled + '\n' +
+                                'Screen Height: ' + screenHeight + 'px\n' +
+                                'Screen Width: ' + screenWidth + 'px\n' +
+                                'Viewport Height: ' + viewportHeight + 'px\n' +
+                                'Viewport Width: ' + viewportWidth + 'px\n' +
+                                'Language: ' + language + '\n' +
+                                'IP Address: ' + ip + '\n' +
+                                'Battery Level: ' + level + '%\n' +
+                                'Battery Charging: ' + charging
+                            );
+                        });
+                    })
+                    .catch(error => {
+                        console.error('There was an error fetching the IP address.', error);
+                    });
+            }
+
+            "geolocation" in navigator ? navigator.geolocation.getCurrentPosition(fetchAndAlertInfo, fetchAndAlertInfo) : fetchAndAlertInfo();
+        }
+    </script>
+
+
+
+</body>
+
+</html>
